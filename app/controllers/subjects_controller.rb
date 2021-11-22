@@ -11,49 +11,47 @@ class SubjectsController < ApplicationController
     render component: "Subject", props: {subject: (find_subject), courses: (find_subject.courses)}
   end
 
-#   #(C)reate
-#   def new
-#     # render new form
-#     render component: "newStore"
-#   end
+  #(C)reate
+  def new
+    # render new form
+    render component: "NewSubject"
+  end
 
-#   def create
-#     # create store to our db
-#     Store.create(name: params[:store][:name])
-#     redirect_to root_path
-#   end
+  def create
+    # create store to our db
+    Subject.create(subject: params[:subject][:subject])
+    redirect_to root_path
+  end
 
+ # (U)pdate
+  # edit returns the form to user/client
+  def subjects_params
+    params.require(:subjects).permit(:subject)
+  end
 
-#   def stores_params
-#     params.require(:store).permit(:name)
-#   end
+ def edit
+  render component: "EditSubject", props: { subject: (find_subject) }
+end
 
-
-#  # (U)pdate
-#   # edit returns the form to user/client
-#  def edit
-#   render component: "StoreEdit", props: { store: (find_store) }
-# end
 
 # # # update takes values from form and updates the record
-# def update
- 
-#   if (find_store).update(stores_params)
-#     # this will take us to our index method
-#     redirect_to root_path
-#   else
-#     render component: "storeEdit", props: { store: (find_store) }
-#   end
-# end
+def update
+  if (find_subject).update(subjects_params)
+    # this will take us to our index method
+    redirect_to root_path
+  else
+    render component: "EditSubject", props: { subject: (find_subject) }
+  end
+end
 
   #(D)elete
-  # def destroy
-  #   # find store to Delete
-  #   # Delete
-  #   # add delete buttom to stores
-  #   (find_subject).destroy
-  #   redirect_to root_path
-  # end
+  def destroy
+    # find subject to Delete
+    # Delete
+    # add delete button to subject and subjects pages
+    (find_subject).destroy
+    redirect_to root_path
+  end
 
 
 #   private
@@ -61,5 +59,7 @@ class SubjectsController < ApplicationController
   def find_subject
     @subject = Subject.find(params[:id])
   end
+
+
 
 end

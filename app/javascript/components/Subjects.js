@@ -8,9 +8,9 @@ const Subjects = (props) => {
         <div>
           <h1>{subject.subject}</h1>
           <p>Subject ID: {subject.id}</p>
-          {/* <a href={`/subjects/${subject.id}/edit`}>Edit</a>
-          <a href = {`/subjects/${subject.id}`} data-method = "delete">Delete Store</a> */}
-          {/* <a href={`/subjects/${subject.id}`}>View Course</a */}
+          <a href={`/subjects/${subject.id}/edit`}>Edit</a>
+          <a href = {`/subjects/${subject.id}`} data-method = "delete">Delete Subject</a>
+          <a href={`/subjects/${subject.id}`}>View Subject</a>
 
         </div>
       )
@@ -20,7 +20,7 @@ const Subjects = (props) => {
   return (
     <div>
       
-      {/* <a href="/subjects/new">Add New Subject</a> */}
+      <a href="/subjects/new">Add New Subject</a>
       {render_subject()}
     </div>
   );
