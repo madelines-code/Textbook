@@ -23,29 +23,29 @@ const Course = (props) => {
     );
   }; 
 
-  // const renderItemComments = () => {
-  //   return props.comments.map((comment) => {
-  //     return (
-  //       <div>
-  //         <h3>{comment.body}</h3>
-  //         <p>{comment.author}</p>
-  //         {/* <p>Comment ID: {comment.id}</p> */}
+  const renderBooks = () => {
+    return props.books.map((book) => {
+      return (
+        <div>
+          <h3>{book.title}</h3>
+          <p>{book.author}</p>
+          {/* <p>Comment ID: {comment.id}</p> */}
           
-  //         <a href={`/items/${props.item.id}/comments/${comment.id}`}>View Comment</a>
-  //         <a href={`/items/${props.item.id}/comments/${comment.id}/edit`}>Edit Comment</a>
-  //         <a data-method="delete" href={`/items/${props.item.id}/comments/${comment.id}`}>
-  //           Delete Comment
-  //         </a>
-  //       </div>
-  //     );
-  //   });
-  // };
+          <a href={`/courses/${props.course.id}/books/${book.id}`}>View Book</a>
+          <a href={`/courses/${props.course.id}/books/${book.id}/edit`}>Edit Book</a>
+          <a data-method="delete" href={`/courses/${props.course.id}/books/${book.id}`}>
+            Delete Book
+          </a>
+        </div>
+      );
+    });
+  };
 
   return (
     <div>
     {renderCourse()}
-    {/* <h1>What People Say About {props.item.name}:</h1>
-    {renderItemComments()} */}
+    <h1>Textbooks {props.course.course_name}:</h1>
+    {renderBooks()}
     <h6><code>{JSON.stringify(props)}</code></h6>
     </div>
   )
